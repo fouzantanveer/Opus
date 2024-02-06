@@ -10,17 +10,22 @@ Having established a thorough understanding of the project through its documenta
 
 Below is a table summarizing the insights gained from reviewing each file within the Opus codebase:
 
-| File Name          | Core Functionality                                         | Insights Gained                                      |
-|--------------------|------------------------------------------------------------|------------------------------------------------------|
-| `shrine.cairo`     | Central hub for synthetic asset management                 | Key contract managing minting, burning, and collateral. Implements role-based access control and interacts with other modules for rate adjustments and liquidity checks. |
-| `access_control.cairo` | Manages roles and permissions                             | Defines roles and permissions, ensuring actions are executed by authorized entities. |
-| `oracle.cairo`     | Provides price feeds for assets                            | Integral for determining asset prices and ensuring transactions are based on current market values. |
-| `treasury.cairo`   | Manages financial operations and budget                    | Handles adjustments to the system's budget, crucial for financial stability. |
-| `collateral_manager.cairo` | Oversees collateral management                         | Ensures collateralization ratios are maintained, critical for the system's security. |
-| `rates_adjuster.cairo` | Adjusts interest rates based on market conditions        | Dynamically adjusts rates to reflect market conditions, impacting minting and burning processes. |
-| `roles.cairo`      | Defines roles within the Opus ecosystem                    | Specifies different roles and their permissions, underpinning the access control system. |
-| `types.cairo`      | Defines data types and structures                          | Essential for defining the data structures used across contracts, ensuring consistency. |
-| `pragma.cairo`     | Interface for external price feeds                         | Connects to external oracles, providing price data for assets within the system. |
+
+| File Name               | Core Functionality                                      | Insights Gained                                                                                                 |
+|-------------------------|---------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
+| `shrine.cairo`          | Manages synthetic assets, collateral, and troves.       | Central to Opus, handling minting (forge), burning (melt), and collateral adjustments. Implements role-based access control, rate adjustments, and liquidity provisions. |
+| `absorber.cairo`        | Handles absorption of synthetics and asset management.  | Facilitates the absorption process, crucial for maintaining the system's stability and managing synthetic assets. |
+| `allocator.cairo`       | Manages asset allocation and distribution.              | Allocates assets within the ecosystem, ensuring efficient distribution and utilization. |
+| `blesser.cairo`         | Provides blessings for transactions and activities.     | Grants permissions and approvals for various operations, supporting the ecosystem's governance structure. |
+| `caretaker.cairo`       | Oversees maintenance and operational integrity.         | Ensures system health and operational efficiency, performing maintenance tasks and overseeing contract interactions. |
+| `controller.cairo`      | Controls system parameters and settings.                | Adjusts and sets critical system parameters, influencing the behavior of minting, burning, and collateral management. |
+| `equalizer.cairo`       | Balances asset distribution and rates.                  | Aims to maintain equilibrium within the system by adjusting rates and distributions, ensuring stability. |
+| `pragma.cairo`          | Connects to oracles for price feeds.                    | Essential for fetching external price data, influencing minting, burning, and collateral valuation. |
+| `purger.cairo`          | Manages the purging of assets and synthetics.           | Responsible for the removal or liquidation of assets and synthetics under certain conditions, ensuring system purity. |
+| `seer.cairo`            | Observes and reports on system states and variables.    | Monitors system parameters, offering insights and data crucial for decision-making and adjustments. |
+| `sentinel.cairo`        | Monitors system health and enforces rules.              | Acts as a guard, enforcing system rules and parameters, ensuring the ecosystem operates within defined bounds. |
+| `types.cairo`           | Defines data structures and types.                      | Critical for establishing the data models used across the project, ensuring consistency and interoperability. |
+| `roles.cairo`           | Defines roles and permissions within the ecosystem.     | Specifies roles, permissions, and access levels, foundational for the project's access control and governance. |
 
 
 
