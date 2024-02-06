@@ -180,9 +180,25 @@ Opus leverages a modular architecture, segmenting its functionality across multi
 
 - **Collateralization Ratios**: The platform uses dynamic collateralization ratios, adjusted through the `set_threshold` function in `Shrine.cairo`, to maintain system health. These ratios are critical for determining the minimum collateral required for minting synthetic assets and for initiating liquidations. The mathematical framework for calculating these ratios takes into account market volatility and the asset's price stability, ensuring that the system remains over-collateralized even in adverse market conditions.
 
-### Interest Rate Mechanisms
+The interest rate mechanism within Opus is designed to dynamically adjust to the platform's operational health and market conditions, promoting stability and incentivizing user engagement. The core of this mechanism is implemented through the `update_rates` function, a sophisticated algorithm that considers multiple variables to determine the optimal interest rates for debts associated with minting synthetic assets.
 
-- **Dynamic Interest Rates**: Opus uses a variable interest rate model for debts incurred through synthetic asset minting. This model adjusts rates based on the `update_rates` function, which is influenced by market conditions and the platform's overall health. The mathematical logic incorporates factors such as utilization ratios, the total value locked (TVL) in the system, and external market interest rates to incentivize certain behaviors (e.g., depositing or withdrawing collateral) and maintain economic equilibrium.
+### Dynamic Interest Rate Model:
+The `update_rates` function is a critical component of the Shrine contract (`shrine.cairo`), responsible for setting the base interest rates for various synthetic assets within the ecosystem. This function takes into account several key factors:
+
+- **Utilization Ratio**: This is a measure of how much of the available liquidity is being utilized within the system. A high utilization ratio indicates a high demand for borrowing, which can lead to higher interest rates. Conversely, lower utilization suggests excess liquidity, potentially leading to lower interest rates to encourage borrowing.
+
+- **Total Value Locked (TVL)**: TVL represents the total amount of collateral locked within the platform. Changes in TVL can affect the supply-demand dynamics of the system, influencing interest rates. For example, a significant increase in TVL might lead to lower interest rates to encourage more borrowing and utilization of the additional liquidity.
+
+- **External Market Interest Rates**: Opus's interest rates are not isolated from the broader financial ecosystem. The platform may adjust its rates in response to external market conditions, such as changes in the interest rates of other DeFi platforms or traditional financial markets. This ensures competitiveness and alignment with the broader economic environment.
+
+- **Economic Incentives**: The interest rate adjustments are designed to create economic incentives for users to act in ways that promote system stability. For example, if the system requires more liquidity, interest rates might be lowered to incentivize deposits. Alternatively, if there's excessive borrowing, rates might be increased to encourage repayments and stabilize the platform's economic health.
+
+### Mathematical Logic and Adjustments:
+The mathematical logic behind the `update_rates` function involves calculating the new interest rates based on the above factors and applying them to the system. This calculation involves complex algorithms that analyze current utilization ratios, compare the TVL against predefined thresholds, and incorporate external rate signals. The resulting rates are then adjusted within the bounds set by the system's governance to prevent extreme fluctuations that could destabilize the platform.
+
+For instance, the system might employ a logarithmic or exponential function to scale interest rate adjustments smoothly in response to changes in the utilization ratio. Similarly, adjustments based on TVL might use a piecewise function that applies different rates of change depending on whether the TVL is above or below certain benchmarks.
+
+
 
 ### Risk Management
 
